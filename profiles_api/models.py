@@ -2,7 +2,7 @@ from django.db import models
 from django.contrib.auth.models import AbstractBaseUser, AbstractUser
 from django.contrib.auth.models import PermissionsMixin
 from django.contrib.auth.models import BaseUserManager
-from django.contrib.auth.hashers import make_password
+
 
 
 class UserProfileManager(BaseUserManager):
@@ -16,12 +16,12 @@ class UserProfileManager(BaseUserManager):
         email = self.normalize_email(email)
         user = self.model(email=email, name=name)
 
-        user.password = make_password('password')
+        user.set_password(password)
         user.save(using=self._db)
 
         return user
 
-    def create_superuser(self, email, name, password):
+    def create_superuser(self, email, name, password=None):
         """"Create and save a new superuser with given details"""
         user = self.create_user(email, name, password)
 
