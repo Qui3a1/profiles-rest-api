@@ -36,3 +36,18 @@ class HelloApiView(APIView):
                 status=status.HTTP_400_BAD_REQUEST
             )
 
+        def put(self, request, pk=None):
+            """Handle updating an object"""
+            return Response({'method': 'PUT'})
+
+
+        def path(self, request, pk=None):
+            """"Handle a partial ipdate of an object"""
+            return Response({'method': 'PATCH'})
+
+
+        def delete(self, request, pk=None):
+            """"Delete an object"""
+            return Response({'method': 'DELETE'})
+
+
