@@ -5,6 +5,7 @@ from rest_framework import status
 
 from profiles_api import serializers
 
+
 # Create your views here.
 
 
@@ -20,7 +21,7 @@ class HelloApiView(APIView):
             'Gives you the most control over you application logic',
             'Is mapped manually to URLs',
         ]
-        return Response({'message': 'Hello!',  'an_apiview': an_apiview})
+        return Response({'message': 'Hello!', 'an_apiview': an_apiview})
 
     def post(self, request):
         """"Create a hello message with our name"""
@@ -38,16 +39,15 @@ class HelloApiView(APIView):
 
         def put(self, request, pk=None):
             """Handle updating an object"""
+
             return Response({'method': 'PUT'})
 
+        def patch(self, request, pk=None):
+            """Handle partial update of object"""
 
-        def path(self, request, pk=None):
-            """"Handle a partial ipdate of an object"""
             return Response({'method': 'PATCH'})
 
-
         def delete(self, request, pk=None):
-            """"Delete an object"""
+            """Delete an object"""
+
             return Response({'method': 'DELETE'})
-
-
