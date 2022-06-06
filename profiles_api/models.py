@@ -1,7 +1,8 @@
 from django.db import models
-from django.contrib.auth.models import AbstractBaseUser
+from django.contrib.auth.models import AbstractBaseUser, AbstractUser
 from django.contrib.auth.models import PermissionsMixin
 from django.contrib.auth.models import BaseUserManager
+from django.contrib.auth.hashers import make_password
 
 
 class UserProfileManager(BaseUserManager):
@@ -15,7 +16,7 @@ class UserProfileManager(BaseUserManager):
         email = self.normalize_email(email)
         user = self.model(email=email, name=name)
 
-        user.set_passowrd(password)
+        user.password = make_password('password')
         user.save(using=self._db)
 
         return user
@@ -29,8 +30,6 @@ class UserProfileManager(BaseUserManager):
         user.save(using=self._db)
 
         return user
-
-
 
 
 class UserProfile(AbstractBaseUser, PermissionsMixin):
