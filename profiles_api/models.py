@@ -5,7 +5,6 @@ from django.contrib.auth.models import BaseUserManager
 from django.conf import settings
 
 
-
 class UserProfileManager(BaseUserManager):
     """"Manage for user profiles"""
 
@@ -60,6 +59,7 @@ class UserProfile(AbstractBaseUser, PermissionsMixin):
 
 class ProfileFeedItem(models.Model):
     """"Profile status update"""
+
     user_profile = models.ForeignKey(
         settings.AUTH_USER_MODEL,
         on_delete=models.CASCADE
